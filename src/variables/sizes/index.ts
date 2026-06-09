@@ -10,6 +10,7 @@ const size = {
   xl: 32,
   xxl: 44,
 };
+
 const height = {
   xs: 16,
   sm: 22,
@@ -17,7 +18,32 @@ const height = {
   lg: 40,
 };
 
+// Размеры шрифта для компонентов
+const fontSize = {
+  sm: 12,
+  md: 14,
+  lg: 16,
+};
+
+// Радиусы скруглений
+const borderRadius = {
+  sm: 4,
+  md: 6,
+  lg: 8,
+  xl: 10,
+  round: 9999,
+};
+
+// Толщина обводки
+const borderWidth = {
+  base: 1,
+  md: 2,
+};
+
 export default {
   size,
   height,
+  fontSize,
+  borderRadius,
+  borderWidth,
 };
