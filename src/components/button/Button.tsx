@@ -6,17 +6,11 @@ export type ButtonVariant = "primary" | "secondary" | "ghost";
 export type ButtonSize = "sm" | "md" | "lg";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Визуальный стиль кнопки */
   variant?: ButtonVariant;
-  /** Размер кнопки */
   size?: ButtonSize;
-  /** Состояние загрузки — блокирует кнопку и показывает спиннер */
   loading?: boolean;
-  /** Иконка слева от текста */
   iconLeft?: React.ReactNode;
-  /** Иконка справа от текста */
   iconRight?: React.ReactNode;
-  /** Растянуть кнопку на всю ширину контейнера */
   fullWidth?: boolean;
 }
 
