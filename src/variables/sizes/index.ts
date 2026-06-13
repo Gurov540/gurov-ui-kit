@@ -18,14 +18,12 @@ const height = {
   lg: 40,
 };
 
-// Размеры шрифта для компонентов
 const fontSize = {
   sm: 12,
   md: 14,
   lg: 16,
 };
 
-// Радиусы скруглений
 const borderRadius = {
   sm: 4,
   md: 6,
@@ -34,7 +32,6 @@ const borderRadius = {
   round: 9999,
 };
 
-// Толщина обводки
 const borderWidth = {
   base: 1,
   md: 2,
