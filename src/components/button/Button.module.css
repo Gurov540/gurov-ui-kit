@@ -1,34 +1,12 @@
-/* ─────────────────────────────────────────────────────────
-   Токены пробрасываются как CSS-переменные из ThemeProvider
-   (или глобального :root) на основе colors и sizes из tokens/
-
-   Пример подключения в ThemeProvider:
-   style={{
-     '--color-primary':               colors.brand.primary.colorPrimary.light,
-     '--color-primary-hover':         colors.brand.primary.colorPrimaryHover.light,
-     '--color-primary-active':        colors.brand.primary.colorPrimaryActive.light,
-     '--color-primary-bg':            colors.brand.primary.colorPrimaryBg.light,
-     '--color-primary-bg-hover':      colors.brand.primary.colorPrimaryBgHover.light,
-     '--color-primary-text':          colors.brand.primary.colorPrimaryText.light,
-     '--color-primary-text-on-light': colors.brand.primary.colorPrimaryTextOnLight.light,
-     '--color-text':                  colors.neutral.text.colorText.light,
-     '--color-bg-ghost-hover':        colors.neutral.backgroundNeutral.colorBgGhostHover.light,
-     '--color-bg-ghost-active':       colors.neutral.backgroundNeutral.colorBgGhostActive.light,
-     '--color-border':                colors.neutral.border.colorBorder.light,
-     '--color-text-disabled':         colors.neutral.text.colorTextDisabled.light,
-   }}
-───────────────────────────────────────────────────────── */
-
-/* ─── Base ─────────────────────────────────────────────── */
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* size.xs */
+  gap: 8px;
   border-style: solid;
-  border-width: 2px; /* borderWidth.md */
+  border-width: 2px;
   border-color: transparent;
-  border-radius: 8px; /* borderRadius.lg */
+  border-radius: 8px;
   font-family: inherit;
   font-weight: 500;
   line-height: 1;
@@ -52,9 +30,6 @@
   width: 100%;
 }
 
-/* ─── Variants ──────────────────────────────────────────── */
-
-/* primary */
 .primary {
   background-color: var(--color-primary);
   color: var(--color-primary-text);
@@ -67,7 +42,6 @@
   background-color: var(--color-primary-active);
 }
 
-/* secondary */
 .secondary {
   background-color: transparent;
   color: var(--color-primary-text-on-light);
@@ -80,7 +54,6 @@
   background-color: var(--color-primary-bg-hover);
 }
 
-/* ghost */
 .ghost {
   background-color: transparent;
   color: var(--color-text);
@@ -93,40 +66,33 @@
   background-color: var(--color-bg-ghost-active);
 }
 
-/* ─── Sizes ─────────────────────────────────────────────── */
-
-/* sm */
 .sm {
   height: 28px;
-  padding: 0 12px; /* size.sm */
-  font-size: 12px; /* fontSize.sm */
-  border-radius: 6px; /* borderRadius.md */
+  padding: 0 12px;
+  font-size: 12px;
+  border-radius: 6px;
 }
 
-/* md — height.height = 32px */
 .md {
-  height: 32px; /* height.height */
-  padding: 0 16px; /* size.size */
-  font-size: 14px; /* fontSize.md */
-  border-radius: 8px; /* borderRadius.lg */
+  height: 32px;
+  padding: 0 16px;
+  font-size: 14px;
+  border-radius: 8px;
 }
 
-/* lg — height.lg = 40px */
 .lg {
-  height: 40px; /* height.lg */
-  padding: 0 20px; /* size.md */
-  font-size: 16px; /* fontSize.lg */
-  border-radius: 8px; /* borderRadius.lg */
+  height: 40px;
+  padding: 0 20px;
+  font-size: 16px;
+  border-radius: 8px;
 }
 
-/* ─── Disabled ───────────────────────────────────────────── */
 .button:disabled {
   opacity: 0.45;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-/* ─── Loading ────────────────────────────────────────────── */
 .loading {
   cursor: wait;
   pointer-events: none;
@@ -138,7 +104,7 @@
   height: 1em;
   border: 2px solid currentColor;
   border-top-color: transparent;
-  border-radius: 9999px; /* borderRadius.round */
+  border-radius: 9999px;
   animation: spin 0.6s linear infinite;
   flex-shrink: 0;
 }
@@ -149,7 +115,6 @@
   }
 }
 
-/* ─── Icons ──────────────────────────────────────────────── */
 .iconLeft,
 .iconRight {
   display: inline-flex;
