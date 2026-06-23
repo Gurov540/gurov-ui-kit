@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "./Button";
 
-// Иконки-заглушки — замени на свою иконочную библиотеку
 const IconSearch = () => (
   <svg
     width="1em"
@@ -75,10 +74,8 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-// ─── Playground ───────────────────────────────────────────
 export const Playground: Story = {};
 
-// ─── Variants ─────────────────────────────────────────────
 export const Primary: Story = {
   args: { variant: "primary", children: "Primary" },
 };
@@ -91,7 +88,6 @@ export const Ghost: Story = {
   args: { variant: "ghost", children: "Ghost" },
 };
 
-// ─── Sizes ────────────────────────────────────────────────
 export const Sizes: Story = {
   render: (args) => (
     <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
@@ -108,7 +104,6 @@ export const Sizes: Story = {
   ),
 };
 
-// ─── States ───────────────────────────────────────────────
 export const Loading: Story = {
   args: { loading: true, children: "Загрузка..." },
 };
@@ -117,7 +112,6 @@ export const Disabled: Story = {
   args: { disabled: true, children: "Недоступно" },
 };
 
-// ─── Icons ────────────────────────────────────────────────
 export const WithIconLeft: Story = {
   args: {
     iconLeft: <IconSearch />,
@@ -148,7 +142,6 @@ export const IconOnly: Story = {
   },
 };
 
-// ─── All Variants Grid ────────────────────────────────────
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
