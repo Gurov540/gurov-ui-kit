@@ -1,140 +1,163 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Button } from './Button'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Button } from "./Button";
 
 // Иконки-заглушки — замени на свою иконочную библиотеку
 const IconSearch = () => (
-  <svg width="1em" height="1em" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8">
+  <svg
+    width="1em"
+    height="1em"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+  >
     <circle cx="6.5" cy="6.5" r="4" />
     <line x1="10" y1="10" x2="14" y2="14" />
   </svg>
-)
+);
 
 const IconArrow = () => (
-  <svg width="1em" height="1em" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8">
+  <svg
+    width="1em"
+    height="1em"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+  >
     <line x1="2" y1="8" x2="14" y2="8" />
     <polyline points="9,3 14,8 9,13" />
   </svg>
-)
+);
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: "Components/Button",
   component: Button,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['primary', 'secondary', 'ghost'],
-      description: 'Визуальный стиль кнопки',
+      control: "select",
+      options: ["primary", "secondary", "ghost"],
+      description: "Визуальный стиль кнопки",
     },
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-      description: 'Размер кнопки',
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description: "Размер кнопки",
     },
     loading: {
-      control: 'boolean',
-      description: 'Состояние загрузки',
+      control: "boolean",
+      description: "Состояние загрузки",
     },
     disabled: {
-      control: 'boolean',
-      description: 'Отключённое состояние',
+      control: "boolean",
+      description: "Отключённое состояние",
     },
     fullWidth: {
-      control: 'boolean',
-      description: 'Растянуть на всю ширину',
+      control: "boolean",
+      description: "Растянуть на всю ширину",
     },
     children: {
-      control: 'text',
-      description: 'Текст кнопки',
+      control: "text",
+      description: "Текст кнопки",
     },
   },
   args: {
-    children: 'Кнопка',
-    variant: 'primary',
-    size: 'md',
+    children: "Кнопка",
+    variant: "primary",
+    size: "md",
     loading: false,
     disabled: false,
     fullWidth: false,
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Button>
+export default meta;
+type Story = StoryObj<typeof Button>;
 
 // ─── Playground ───────────────────────────────────────────
-export const Playground: Story = {}
+export const Playground: Story = {};
 
 // ─── Variants ─────────────────────────────────────────────
 export const Primary: Story = {
-  args: { variant: 'primary', children: 'Primary' },
-}
+  args: { variant: "primary", children: "Primary" },
+};
 
 export const Secondary: Story = {
-  args: { variant: 'secondary', children: 'Secondary' },
-}
+  args: { variant: "secondary", children: "Secondary" },
+};
 
 export const Ghost: Story = {
-  args: { variant: 'ghost', children: 'Ghost' },
-}
+  args: { variant: "ghost", children: "Ghost" },
+};
 
 // ─── Sizes ────────────────────────────────────────────────
 export const Sizes: Story = {
   render: (args) => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-      <Button {...args} size="sm">Small</Button>
-      <Button {...args} size="md">Medium</Button>
-      <Button {...args} size="lg">Large</Button>
+    <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+      <Button {...args} size="sm">
+        Small
+      </Button>
+      <Button {...args} size="md">
+        Medium
+      </Button>
+      <Button {...args} size="lg">
+        Large
+      </Button>
     </div>
   ),
-}
+};
 
 // ─── States ───────────────────────────────────────────────
 export const Loading: Story = {
-  args: { loading: true, children: 'Загрузка...' },
-}
+  args: { loading: true, children: "Загрузка..." },
+};
 
 export const Disabled: Story = {
-  args: { disabled: true, children: 'Недоступно' },
-}
+  args: { disabled: true, children: "Недоступно" },
+};
 
 // ─── Icons ────────────────────────────────────────────────
 export const WithIconLeft: Story = {
   args: {
     iconLeft: <IconSearch />,
-    children: 'Поиск',
+    children: "Поиск",
   },
-}
+};
 
 export const WithIconRight: Story = {
   args: {
     iconRight: <IconArrow />,
-    children: 'Далее',
+    children: "Далее",
   },
-}
+};
 
 export const WithBothIcons: Story = {
   args: {
     iconLeft: <IconSearch />,
     iconRight: <IconArrow />,
-    children: 'Найти',
+    children: "Найти",
   },
-}
+};
 
 export const IconOnly: Story = {
   args: {
     iconLeft: <IconSearch />,
     children: undefined,
-    'aria-label': 'Поиск',
+    "aria-label": "Поиск",
   },
-}
+};
 
 // ─── All Variants Grid ────────────────────────────────────
 export const AllVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      {(['primary', 'secondary', 'ghost'] as const).map((variant) => (
-        <div key={variant} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          {(['sm', 'md', 'lg'] as const).map((size) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      {(["primary", "secondary", "ghost"] as const).map((variant) => (
+        <div
+          key={variant}
+          style={{ display: "flex", alignItems: "center", gap: "1rem" }}
+        >
+          {(["sm", "md", "lg"] as const).map((size) => (
             <Button key={size} variant={variant} size={size}>
               {variant} / {size}
             </Button>
@@ -143,4 +166,4 @@ export const AllVariants: Story = {
       ))}
     </div>
   ),
-}
+};
