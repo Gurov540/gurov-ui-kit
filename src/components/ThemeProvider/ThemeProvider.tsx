@@ -1,6 +1,6 @@
 import React from "react";
 import { colors } from "../../variables/colors";
-import sizes from "../../variables/sizes";
+import sizes from "../../variables/size";
 import { ThemeContext, type Theme } from "./theme.context";
 
 interface ThemeProviderProps {
