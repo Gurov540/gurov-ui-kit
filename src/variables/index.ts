@@ -1,7 +1,7 @@
 import { colors } from "./colors";
-import sizes from "./sizes";
+import size from "./size";
 
 export default {
   colors,
-  sizes,
+  size,
 };
