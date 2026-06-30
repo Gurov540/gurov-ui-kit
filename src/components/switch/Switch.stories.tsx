@@ -12,19 +12,13 @@ type Story = StoryObj<typeof Switch>;
 
 export const Default: Story = {
   args: {
-    size: "default",
+    SwitchSize: "sm",
   },
 };
 
 export const Small: Story = {
   args: {
-    size: "small",
-  },
-};
-
-export const WithLabel: Story = {
-  args: {
-    label: "Label",
+    SwitchSize: "sm",
   },
 };
 
