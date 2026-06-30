@@ -1,61 +1,83 @@
-import type { FC } from "react";
+import React from "react";
 import clsx from "clsx";
 
 import styles from "./Switch.module.css";
 
 import { Loading } from "../../icons/loading";
+import { ThemeProvider } from "../ThemeProvider/ThemeProvider";
 
-export interface Props {
-  uniqId?: string;
-  labelFor?: string;
-  defaultChecked?: boolean;
-  checked?: boolean;
-  disabled?: boolean;
+export type SwitchSize = "sm" | "md";
+
+export interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  /**
+   * Размер переключателя
+   */
+  SwitchSize?: "sm" | "md";
+
+  /**
+   * Отображает состояние загрузки
+   */
   loading?: boolean;
-  size?: "default" | "small";
-  label?: string;
-  className?: string;
+
+  /**
+   * Текст справа от переключателя
+   */
+  children?: React.ReactNode;
 }
 
-export const Switch: FC<Props> = ({
-  checked,
-  className,
-  defaultChecked,
-  disabled,
-  loading,
-  size = "default",
-  labelFor,
-  label,
-  uniqId = "switch",
-}) => {
-  return (
-    <div className={clsx(styles.wrapper, className)}>
-      {label && <div>{label}</div>}
+export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
+  (
+    {
+      size = "md",
+      loading = false,
+      disabled = false,
+      children,
+      className,
+      id,
+      ...rest
+    },
+    ref,
+  ) => {
+    const isDisabled = disabled || loading;
 
-      <input
-        id={uniqId}
-        type="checkbox"
-        className={styles.input}
-        checked={checked}
-        defaultChecked={defaultChecked}
-        disabled={disabled || loading}
-      />
+    const wrapperClassName = clsx(styles.wrapper, className);
 
-      <label
-        htmlFor={labelFor ?? uniqId}
-        className={clsx(
-          styles.label,
-          styles[size],
-          disabled && styles.disabled,
-          loading && styles.loading,
-          loading &&
-            (checked ? styles.loadingChecked : styles.loadingUnchecked),
-        )}
-      >
-        <Loading />
+    const trackClassName = clsx(
+      styles.track,
+      styles[size],
+      isDisabled && styles.disabled,
+      loading && styles.loading,
+    );
 
-        <div className={styles.thumb} />
-      </label>
-    </div>
-  );
-};
+    return (
+      <ThemeProvider theme="light">
+        <label className={wrapperClassName}>
+          <input
+            ref={ref}
+            id={id}
+            type="checkbox"
+            className={styles.input}
+            disabled={isDisabled}
+            aria-busy={loading}
+            aria-disabled={isDisabled}
+            {...rest}
+          />
+
+          <span className={trackClassName}>
+            {loading ? (
+              <span className={styles.spinner} aria-hidden="true">
+                <Loading />
+              </span>
+            ) : (
+              <span className={styles.thumb} />
+            )}
+          </span>
+
+          {children && <span className={styles.label}>{children}</span>}
+        </label>
+      </ThemeProvider>
+    );
+  },
+);
+
+Switch.displayName = "Switch";
